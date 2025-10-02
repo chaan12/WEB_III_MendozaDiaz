@@ -44,9 +44,11 @@ def test_historial(monkeypatch):
 
     historial = []
     for document in expected_data:
+        numeros = document.get("numeros")
+        if numeros is None:
+            numeros = [document["a"], document["b"]]
         historial.append({
-            "a": document["a"],
-            "b": document["b"],
+            "numeros": numeros,
             "resultado": document["resultado"],
             "date": document["date"].isoformat()
         })
